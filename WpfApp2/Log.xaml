@@ -11,7 +11,9 @@
             <Label Content="Фильтр"/>
             <TextBox x:Name="filterTextBox"
                      TextChanged="filterTextBox_TextChanged"/>
-            <ListBox x:Name="groups"/>
+            <ListBox x:Name="groups"
+                     ItemsSource="{Binding Groups}"
+                     DisplayMemberPath="Code"/>
         </StackPanel>
     </Grid>
 </Window>

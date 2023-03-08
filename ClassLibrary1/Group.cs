@@ -13,6 +13,7 @@ namespace ClassLibrary1
         public int SubGroup { get; set; }
         public int ClassRoom { get; set; }
         public int StartYear { get; set; }
+        public string Code { get; set; }
 
         public static void CreateGroups()
         {
@@ -31,6 +32,7 @@ namespace ClassLibrary1
                             StartYear = 2019 + y,
                             Special = special
                         };
+                        group.Code = group.GetCode();
                         db.Groups.Add(group);
                     }
                 }

@@ -65,6 +65,10 @@
     <Compile Include="Migrations\202303080933186_qwdqwdq.designer.cs">
       <DependentUpon>202303080933186_qwdqwdq.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303081134441_Groups.cs" />
+    <Compile Include="Migrations\202303081134441_Groups.designer.cs">
+      <DependentUpon>202303081134441_Groups.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Special.cs" />
     <Compile Include="User.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303080933186_qwdqwdq.resx">
       <DependentUpon>202303080933186_qwdqwdq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303081134441_Groups.resx">
+      <DependentUpon>202303081134441_Groups.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

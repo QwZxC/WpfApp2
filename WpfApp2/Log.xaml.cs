@@ -28,7 +28,7 @@ namespace WpfApp2
 
             using(var db = new DBContext())
             {
-                db.Groups.ToList().ForEach(i=> groups.Items.Add(i.GetCode()));
+                db.Groups.ToList().ForEach(i=> groups.Items.Add(i));
             }
         }
 
@@ -39,9 +39,8 @@ namespace WpfApp2
             {
                 db.Groups.ToList().ForEach(i => 
                 {
-                    string code = i.GetCode();
-                    if (code.StartsWith(filterTextBox.Text))
-                        groups.Items.Add(code);
+                    if (i.Code.StartsWith(filterTextBox.Text))
+                        groups.Items.Add(i);
                 });
             }
         }
