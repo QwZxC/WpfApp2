@@ -32,7 +32,7 @@ namespace ClassLibrary1
                             StartYear = 2019 + y,
                             Special = special
                         };
-                        group.Code = group.GetCode();
+                        group.Code = group.GetCode(special);
                         db.Groups.Add(group);
                     }
                 }
@@ -40,15 +40,13 @@ namespace ClassLibrary1
             }
         }
 
-        public string GetCode()
+        public string GetCode(Special special)
         {
             int kourse = DateTime.Now.Year - StartYear;
             if (DateTime.Now.Month >= 9)
                 kourse++;
-            if (Special == null)
-                Special = new Special("П", "Программисты");
 
-            return $"{kourse}-{SubGroup}{Special?.Code}{ClassRoom}";
+            return $"{kourse}-{SubGroup}{special?.Code}{ClassRoom}";
         }
     }
 }
