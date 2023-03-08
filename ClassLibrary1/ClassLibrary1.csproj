@@ -53,6 +53,19 @@
   <ItemGroup>
     <Compile Include="DBContext.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="Migrations\202303080741556_InitialCreate.cs" />
+    <Compile Include="Migrations\202303080741556_InitialCreate.designer.cs">
+      <DependentUpon>202303080741556_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303080927282_sq.cs" />
+    <Compile Include="Migrations\202303080927282_sq.designer.cs">
+      <DependentUpon>202303080927282_sq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303080933186_qwdqwdq.cs" />
+    <Compile Include="Migrations\202303080933186_qwdqwdq.designer.cs">
+      <DependentUpon>202303080933186_qwdqwdq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Special.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +73,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303080741556_InitialCreate.resx">
+      <DependentUpon>202303080741556_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303080927282_sq.resx">
+      <DependentUpon>202303080927282_sq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303080933186_qwdqwdq.resx">
+      <DependentUpon>202303080933186_qwdqwdq.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -23,6 +23,10 @@ namespace WpfApp2
     {
         public MainWindow()
         {
+            using(var db = new DBContext())
+            {
+                db.Database.Delete();
+            }
             User.CreateAdmin();
             InitializeComponent();
         }
@@ -37,6 +41,7 @@ namespace WpfApp2
                 Hide();
                 Log log = new Log();
                 log.ShowDialog();
+                Group.CreateGroups();
                 Show();
             }
 

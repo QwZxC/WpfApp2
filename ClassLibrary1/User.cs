@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ClassLibrary1
@@ -20,17 +21,21 @@ namespace ClassLibrary1
                 //db.Database.Create();
                 var user = new User { Login = "Admin", PasswordHash = "Admin" };
                 db.Users.Add(user);
-
                 db.SaveChanges();
-
             }
         }
         public static User LogIn(string login, string password)
         {
             using(var db = new DBContext())
             {
-                var users = db.Users.Where(u => u.Login == login && u.PasswordHash == password);
-                return users.Count() == 1 ? users.First() : null;
+                try
+                {
+                    return db.Users.Where(u => u.Login == login && u.PasswordHash == password).First();
+                }
+                catch
+                {
+                    return null;
+                }
             }
             
         }

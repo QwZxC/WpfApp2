@@ -18,11 +18,11 @@ namespace ClassLibrary1
         {
             using (var db = new DBContext())
             {
-                Special special = new Special { Code = 'П', Name = "Программисты" };
-                db.Specials.Add(special);
+                Special special = new Special("П", "Программисты");
+                db.Specials.Add(special);   
                 for (int y = 0; y < 4; y++)
                 {
-                    for (int sg = 0; sg < 2; sg++)
+                    for (int sg = 1; sg <= 2; sg++)
                     {
                         Group group = new Group
                         {
@@ -41,9 +41,12 @@ namespace ClassLibrary1
         public string GetCode()
         {
             int kourse = DateTime.Now.Year - StartYear;
-            if (DateTime.Now.Month >= 9) kourse++;
+            if (DateTime.Now.Month >= 9)
+                kourse++;
+            if (Special == null)
+                Special = new Special("П", "Программисты");
 
-            return $"{kourse}-{SubGroup}{Special.Code}{ClassRoom}";
+            return $"{kourse}-{SubGroup}{Special?.Code}{ClassRoom}";
         }
     }
 }

@@ -21,8 +21,6 @@ namespace WpfApp2
     /// </summary>
     public partial class Log : Window
     {
-        public ObservableCollection<Group> Groups;
-
         public Log()
         {
             InitializeComponent();
@@ -30,7 +28,21 @@ namespace WpfApp2
 
             using(var db = new DBContext())
             {
-                db.Groups.ToList().ForEach(i=> Groups.Add(i));
+                db.Groups.ToList().ForEach(i=> groups.Items.Add(i.GetCode()));
+            }
+        }
+
+        private void filterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            groups.Items.Clear();
+            using (var db = new DBContext())
+            {
+                db.Groups.ToList().ForEach(i => 
+                {
+                    string code = i.GetCode();
+                    if (code.StartsWith(filterTextBox.Text))
+                        groups.Items.Add(code);
+                });
             }
         }
     }
