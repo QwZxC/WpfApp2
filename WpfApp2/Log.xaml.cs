@@ -1,5 +1,4 @@
-﻿using ClassLibrary1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,24 +23,36 @@ namespace WpfApp2
         public Log()
         {
             InitializeComponent();
-            Group.CreateGroups();
 
-            using(var db = new DBContext())
+            using(var db = new Entities())
             {
-                db.Groups.ToList().ForEach(i=> groups.Items.Add(i));
+                Singletone.CurrentUser.Jurnal.ToList().ForEach(j => groups.Items.Add(j.Group1));
             }
         }
 
         private void filterTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            // очищаем листбокс
             groups.Items.Clear();
-            using (var db = new DBContext())
+            // заполняем листбокс группами, которые подходят по условию
+            using (var db = new Entities())
             {
-                db.Groups.ToList().ForEach(i => 
+                Singletone.CurrentUser.Jurnal.ToList().ForEach(j => 
                 {
-                    if (i.Code.StartsWith(filterTextBox.Text))
-                        groups.Items.Add(i);
+                    if (j.Group1.Code.Contains(filterTextBox.Text))
+                        groups.Items.Add(j.Group1);
                 });
+            }
+        }
+
+        private void groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            diciplinies.Items.Clear();
+            using (var db = new Entities())
+            {
+                Singletone.CurrentUser.Jurnal
+                    .Where(j => j.Group1 == groups.SelectedItem)
+                    .ToList().ForEach(j => diciplinies.Items.Add(j.Discipline1));
             }
         }
     }

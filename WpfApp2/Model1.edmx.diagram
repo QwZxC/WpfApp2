@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="991bac1613cf4f818b841888f091d941" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Discipline" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Group" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Jurnal" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Special" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3.875" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Jurnal_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Group_Special" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Jurnal_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Jurnal_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClassLibrary1;
 
 namespace WpfApp2
 {
@@ -23,28 +22,25 @@ namespace WpfApp2
     {
         public MainWindow()
         {
-            using(var db = new DBContext())
-            {
-                db.Database.Delete();
-            }
-            User.CreateAdmin();
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            User user = User.LogIn(login_TextBox.Text, password_PasswordBox.Password);
-            if (user == null)
-                MessageBox.Show("Неверный логин или пароль");
-            else
+            using(var db = new Entities())
             {
-                Hide();
-                Log log = new Log();
-                log.ShowDialog();
-                Group.CreateGroups();
-                Show();
+                var users = db.User.ToList().Where(u => u.UserName == login_TextBox.Text && u.Password == password_PasswordBox.Password);
+                if (users.Count() == 0)
+                    MessageBox.Show("Неверный логин или пароль");
+                else
+                {
+                    Singletone.CurrentUser = users.First();
+                    Hide();
+                    Log log = new Log();
+                    log.ShowDialog();
+                    Show();
+                }
             }
-
         }
     }
 }
